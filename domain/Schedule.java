@@ -81,7 +81,7 @@ public class Schedule {
 			Grade grade = e.getKey();
 			Staffing[] staffingDays = e.getValue();
 			for (int x = 0; x < staffingDays.length; x++) {
-				int assigned = staffingDays[x].getAssigned();
+				int assigned = staffingDays[x].getSupply();
 				int noChangeItCount = 0;
 				while (staffingDays[x].isShort()) {
 					Assignment ass = assignmentsByGrade.getRandomValue(grade);
@@ -89,7 +89,7 @@ public class Schedule {
 					if (addShiftToAnEmployee(emp, x, ass)) {
 						staffingDays[x].add(); // Increment assigned count by one.
 					}
-					if (assigned == staffingDays[x].getAssigned()) {
+					if (assigned == staffingDays[x].getSupply()) {
 						noChangeItCount++;
 					}
 					if (noChangeItCount == 5) {
@@ -175,7 +175,7 @@ public class Schedule {
 		for (Map.Entry<Grade, Staffing[]> entry : map.entrySet()) {
 			Staffing[] Staffin = entry.getValue();
 			for (int i = 0; i < Staffin.length; i++) {
-				Staffin[i] = new Staffing(Staffin[i].getNeed());
+				Staffin[i] = new Staffing(Staffin[i].getDemand());
 			}
 			returnMap.put(entry.getKey(), Staffin);
 		}

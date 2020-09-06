@@ -19,24 +19,26 @@ public class GATest {
 		Grade g2 = new Grade("G2");
 		Grade g3 = new Grade("G3");
 		// Employees
-		Employee e1 = new Employee("Niranja", g3);
-		Employee e2 = new Employee("Arjuna", g1);
-		Employee e3 = new Employee("Jayasinghe", g2);
-		Employee e4 = new Employee("Anusha", g1);
-		Employee e5 = new Employee("Sandamali", g2);
-		Employee e6 = new Employee("Edirisinghe", g3);
-		Employee e7 = new Employee("Nilantha", g2);
-		Employee e8 = new Employee("Ayesha", g1);
-		Employee e9 = new Employee("Sampath", g2);
-		Employee e10 = new Employee("Niranjalee", g1);
-		Employee e11 = new Employee("Supun", g2);
-		Employee e12 = new Employee("Asanka", g3);
-		Employee e13 = new Employee("Niranja1", g3);
-		Employee e14 = new Employee("Arjuna1", g1);
-		Employee e15 = new Employee("Jayasinghe1", g2);
-		Employee e16 = new Employee("Anusha1", g1);
-		Employee e17 = new Employee("Sandamali1", g2);
-		Employee e18 = new Employee("Edirisinghe1", g3);
+		Employee e1 = new Employee("James", g3);
+		Employee e2 = new Employee("Harper", g1);
+		Employee e3 = new Employee("Mason", g2);
+		Employee e4 = new Employee("Evelyn", g1);
+		Employee e5 = new Employee("Ella", g2);
+		Employee e6 = new Employee("Avery", g3);
+		Employee e7 = new Employee("Jackson", g2);
+		Employee e8 = new Employee("Scarlett", g1);
+		Employee e9 = new Employee("Madison", g2);
+		Employee e10 = new Employee("Carter", g1);
+		Employee e11 = new Employee("Wyatt", g2);
+		Employee e12 = new Employee("Jack", g3);
+		Employee e13 = new Employee("Lily", g3);
+		Employee e14 = new Employee("Eleanor", g1);
+		Employee e15 = new Employee("Grayson", g2);
+		Employee e16 = new Employee("Lillian", g1);
+		Employee e17 = new Employee("Addison", g2);
+		Employee e18 = new Employee("Aubrey", g3);
+		Employee e19 = new Employee("Julian", g1);
+		Employee e20 = new Employee("Lincoln", g2);
 
 		// Create schedule template.
 		scheduleTemplate = new Schedule();
@@ -59,6 +61,8 @@ public class GATest {
 		fillDays(employeeScheduleDays, e16);
 		fillDays(employeeScheduleDays, e17);
 		fillDays(employeeScheduleDays, e18);
+		fillDays(employeeScheduleDays, e19);
+		fillDays(employeeScheduleDays, e20);
 		scheduleTemplate.setEmployeeScheduleDays(employeeScheduleDays);
 		// Staffing.
 		HashMap<Grade, Staffing[]> staffingMap = new HashMap<>();
@@ -125,7 +129,7 @@ public class GATest {
 			currentBestFitness = bestFitness;
 			printSchedule(evolutionCount, population.getFirst());
 			// Break the evolution if the evolutionCount has reached the maximum or the fitness has not been changed in last 100 iterations.
-			if (noFitnessChange == 500 || evolutionCount >= GAConfig.MAX_EVOLUTIONS) {
+			if (noFitnessChange == GAConfig.BREAK_ON_NOFITNESSCHANGE || evolutionCount >= GAConfig.MAX_EVOLUTIONS) {
 				break;
 			}
 		}
@@ -136,7 +140,7 @@ public class GATest {
 		finalSchedule.getEmployeeScheduleDays().forEach((e, days) -> {
 			System.out.printf("%20s -> ", e);
 			for (Day d : days) {
-				System.out.printf("%15s |  ", d);
+				System.out.printf("%14s |  ", d);
 			}
 			System.out.println("");
 		});

@@ -7,31 +7,31 @@ package domain;
  * @version 1.0
  */
 public class Staffing {
-	private int need;
-	private int assigned;
+	private int demand;
+	private int supply;
 
-	public Staffing(int need) {
-		this.need = need;
-		this.assigned = 0;
+	public Staffing(int demand) {
+		this.demand = demand;
+		this.supply = 0;
 	}
 
 	public void add() {
-		this.assigned++;
+		this.supply++;
 	}
 
 	public void remove() {
-		this.assigned--;
+		this.supply--;
 	}
 
 	public boolean isShort() {
-		return need > assigned;
+		return demand > supply;
 	}
 
-	public int getAssigned() {
-		return this.assigned;
+	public int getSupply() {
+		return this.supply;
 	}
 
-	public int getNeed() {
-		return need;
+	public int getDemand() {
+		return demand;
 	}
 }
