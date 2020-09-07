@@ -1,5 +1,5 @@
 # Genetic Algorithm
-This algorithm creates roster for the environment where employees are allocated according to the demand. The algorithm can be fine tuned by changing variables in GAConfig. 
+This algorithm creates roster for the environment where employees are allocated according to the demand.(For example, Nurse schedule) The algorithm can be fine tuned by changing variables in GAConfig. 
 GATest is the main class.
 
 # Pseudocode 
